@@ -6,7 +6,6 @@ package org.lfenergy.compas.sitipe.rest.v1;
 
 import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
-import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 import org.lfenergy.compas.sitipe.rest.v1.model.BayTypicalResponse;
 import org.lfenergy.compas.sitipe.service.BayTypicalService;
 
@@ -21,12 +20,13 @@ import java.util.stream.Collectors;
 
 // @Authenticated
 @RequestScoped
-@Path("/sitipe/v1")
-public class CompasSitipeResource {
+@Path("/v1/baytypicals")
+public class BayTypicalResource {
+    
     private final BayTypicalService bayTypicalService;
 
     @Inject
-    public CompasSitipeResource(final BayTypicalService bayTypicalService) {
+    public BayTypicalResource(final BayTypicalService bayTypicalService) {
         this.bayTypicalService = bayTypicalService;
     }
 
@@ -34,11 +34,11 @@ public class CompasSitipeResource {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     @Blocking
-    public Uni<BayTypicalResponse> getHelloWorld() {
+    public Uni<BayTypicalResponse> getAssignedBayTypicals() {
         var response = new BayTypicalResponse();
 
         response.setBayTypicals(
-            this.bayTypicalService.getBayTypicals()
+            this.bayTypicalService.getAssignedBayTypicals()
                 .stream()
                 .map(bt -> new BayTypicalResponse.BayTypical(
                     bt.getId(),

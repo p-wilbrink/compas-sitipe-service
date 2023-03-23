@@ -39,7 +39,7 @@ public class BayTypicalResponse {
 
         @Schema(description = "Id of the BayTypical.", example = "1")
         @XmlElement(name = "Id", namespace =  SITIPE_SERVICE_V1_NS_URI)
-        private int id;
+        private Integer id;
 
         @Schema(description = "Access Id of the BayTypical.", example = "c50b3276-81f6-4bc3-82ab-b8adef829136")
         @XmlElement(name = "AccessId", namespace =  SITIPE_SERVICE_V1_NS_URI)
@@ -86,7 +86,7 @@ public class BayTypicalResponse {
         private String referenceAccessId;
 
         public BayTypical(
-            final int id,
+            final Integer id,
             final String accessId,
             final String name,
             final String version,
@@ -112,11 +112,11 @@ public class BayTypicalResponse {
             this.contentVersion = contentVersion;
             this.referenceAccessId = referenceAccessId;
         }
-        public int getId() {
+        public Integer getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Integer id) {
             this.id = id;
         }
 

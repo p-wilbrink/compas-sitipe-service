@@ -33,7 +33,7 @@ public class BayTypicalService {
         this.sitipeProperties = sitipeProperties;
     }
 
-    public List<BayTypical> getBayTypicals() {
+    public List<BayTypical> getAssignedBayTypicals() {
         return this.systemVersionRepository.findByVersion(sitipeProperties.version())
             .stream()
             .flatMap(systemVersion -> systemVersion.getAssignedBayTypicals() != null ? Arrays.stream(systemVersion.getAssignedBayTypicals().split(",")) : Stream.empty())

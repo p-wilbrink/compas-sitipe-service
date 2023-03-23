@@ -14,9 +14,9 @@ import javax.persistence.Table;
 public class SystemVersion {
 
     @Id()
-    private int id;
+    private Long id;
 
-    @Column(name = "accessId", columnDefinition = "uniqueIdentifier")
+    @Column(name = "accessId", columnDefinition = "UUID")
     private String accessId;
 
     @Column(name = "version", columnDefinition = "nvarchar")
@@ -43,14 +43,14 @@ public class SystemVersion {
     @Column(name = "contentVersion", columnDefinition = "nvarchar")
     private String contentVersion;
 
-    @Column(name = "referenceAccessId", columnDefinition = "uniqueidentifier")
+    @Column(name = "referenceAccessId", columnDefinition = "UUID")
     private String referenceAccessId;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

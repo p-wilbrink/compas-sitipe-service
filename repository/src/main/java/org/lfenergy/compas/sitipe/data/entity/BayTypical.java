@@ -14,9 +14,10 @@ import javax.persistence.Table;
 public class BayTypical {
 
     @Id()
-    private int id;
+    @Column(columnDefinition = "BIGINT")
+    private Integer id;
 
-    @Column(name = "accessId", columnDefinition = "uniqueIdentifier")
+    @Column(name = "accessId", columnDefinition = "UUID")
     private String accessId;
 
     @Column(name = "name", columnDefinition = "nvarchar")
@@ -46,14 +47,14 @@ public class BayTypical {
     @Column(name = "contentVersion", columnDefinition = "nvarchar")
     private String contentVersion;
 
-    @Column(name = "referenceAccessId", columnDefinition = "uniqueidentifier")
+    @Column(name = "referenceAccessId", columnDefinition = "UUID")
     private String referenceAccessId;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
