@@ -4,6 +4,7 @@
 
 package org.lfenergy.compas.sitipe.rest.v2;
 
+import io.quarkus.security.Authenticated;
 import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 import org.lfenergy.compas.sitipe.data.entity.BayTypical;
@@ -18,7 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-// @Authenticated
+@Authenticated
 @RequestScoped
 @Path("/v2/baytypicals")
 public class BayTypicalResource {
