@@ -14,4 +14,4 @@ services:
       ACCEPT_EULA: 1
       MSSQL_SA_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "1434:1433"
+      - "1433:1433"

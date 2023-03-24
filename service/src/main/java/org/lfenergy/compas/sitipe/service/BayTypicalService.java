@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.service;
 
 import org.lfenergy.compas.sitipe.SitipeProperties;
@@ -29,7 +33,7 @@ public class BayTypicalService {
         this.sitipeProperties = sitipeProperties;
     }
 
-    public List<BayTypical> getBayTypicals() {
+    public List<BayTypical> getAssignedBayTypicals() {
         return this.systemVersionRepository.findByVersion(sitipeProperties.version())
             .stream()
             .flatMap(systemVersion -> systemVersion.getAssignedBayTypicals() != null ? Arrays.stream(systemVersion.getAssignedBayTypicals().split(",")) : Stream.empty())

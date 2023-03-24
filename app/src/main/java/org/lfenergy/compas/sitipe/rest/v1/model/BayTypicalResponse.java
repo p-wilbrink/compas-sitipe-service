@@ -1,9 +1,12 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.rest.v1.model;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,23 +22,23 @@ public class BayTypicalResponse {
 
     @Schema(description = "List of found BayTypicals in the database.")
     @XmlElement(name = "BayTypical", namespace = SITIPE_SERVICE_V1_NS_URI)
-    private List<BayTypical> bayTypicals;
+    private List<BayTypicalItem> bayTypicals;
 
-    public void setBayTypicals(final List<BayTypical> bayTypicals) {
+    public void setBayTypicals(final List<BayTypicalItem> bayTypicals) {
         this.bayTypicals = bayTypicals;
     }
 
-    public List<BayTypical> getBayTypicals() {
+    public List<BayTypicalItem> getBayTypicals() {
         return bayTypicals;
     }
 
     @Schema(description = "BayTypical found in the database.")
     @XmlAccessorType(XmlAccessType.FIELD)
-    public static class BayTypical {
+    public static class BayTypicalItem {
 
         @Schema(description = "Id of the BayTypical.", example = "1")
         @XmlElement(name = "Id", namespace =  SITIPE_SERVICE_V1_NS_URI)
-        private int id;
+        private Integer id;
 
         @Schema(description = "Access Id of the BayTypical.", example = "c50b3276-81f6-4bc3-82ab-b8adef829136")
         @XmlElement(name = "AccessId", namespace =  SITIPE_SERVICE_V1_NS_URI)
@@ -49,7 +52,7 @@ public class BayTypicalResponse {
         @XmlElement(name = "Version", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String version;
 
-        @Schema(description = "Description of the BayTypical.", example = "")
+        @Schema(description = "Description of the BayTypical.")
         @XmlElement(name = "Description", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String description;
 
@@ -81,38 +84,27 @@ public class BayTypicalResponse {
         @XmlElement(name = "ReferenceAccessId", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String referenceAccessId;
 
-        public BayTypical(
-            final int id,
-            final String accessId,
-            final String name,
-            final String version,
-            final String description,
-            final int released,
-            final String lockedBy,
-            final Long lockedOn,
-            final Long modifiedOn,
-            final String smrFile,
-            final String contentVersion,
-            final String referenceAccessId
+        public BayTypicalItem(
+                final BayTypical bt
         ) {
-            this.id = id;
-            this.accessId = accessId;
-            this.name = name;
-            this.version = version;
-            this.description = description;
-            this.released = released;
-            this.lockedBy = lockedBy;
-            this.lockedOn = lockedOn;
-            this.modifiedOn = modifiedOn;
-            this.smrFile = smrFile;
-            this.contentVersion = contentVersion;
-            this.referenceAccessId = referenceAccessId;
+            this.id = bt.getId();
+            this.accessId = bt.getAccessId();
+            this.name = bt.getName();
+            this.version = bt.getVersion();
+            this.description = bt.getDescription();
+            this.released = bt.getReleased();
+            this.lockedBy = bt.getLockedBy();
+            this.lockedOn = bt.getLockedOn();
+            this.modifiedOn = bt.getModifiedOn();
+            this.smrFile = bt.getSmrFile();
+            this.contentVersion = bt.getContentVersion();
+            this.referenceAccessId = bt.getReferenceAccessId();
         }
-        public int getId() {
+        public Integer getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Integer id) {
             this.id = id;
         }
 

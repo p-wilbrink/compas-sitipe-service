@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.service;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -53,7 +57,7 @@ class BayTypicalServiceTest {
         when(bayTypicalRepository.findByAccessId("A")).thenReturn(Collections.singletonList(bayTypical1));
         when(bayTypicalRepository.findByAccessId("B")).thenReturn(Collections.singletonList(bayTypical2));
 
-        var res = sut.getBayTypicals();
+        var res = sut.getAssignedBayTypicals();
 
         assertEquals(2, res.size());
         assertTrue(res.containsAll(asList(bayTypical1, bayTypical2)));
@@ -75,7 +79,7 @@ class BayTypicalServiceTest {
         when(bayTypicalRepository.findByAccessId("A")).thenReturn(asList(bayTypical1, bayTypical2));
         when(bayTypicalRepository.findByAccessId("B")).thenReturn(asList(bayTypical3, bayTypical4));
 
-        var res = sut.getBayTypicals();
+        var res = sut.getAssignedBayTypicals();
 
         assertEquals(4, res.size());
         assertTrue(res.containsAll(asList(bayTypical1, bayTypical2, bayTypical3, bayTypical4)));
@@ -88,7 +92,7 @@ class BayTypicalServiceTest {
         when(systemVersionRepository.findByVersion(version)).thenReturn(emptyList());
         when(properties.version()).thenReturn(version);
 
-        var res = sut.getBayTypicals();
+        var res = sut.getAssignedBayTypicals();
 
         assertEquals(0, res.size());
     }
@@ -104,7 +108,7 @@ class BayTypicalServiceTest {
         when(properties.version()).thenReturn(version);
         when(bayTypicalRepository.findByAccessId(any())).thenReturn(emptyList());
 
-        var res = sut.getBayTypicals();
+        var res = sut.getAssignedBayTypicals();
 
         assertEquals(0, res.size());
     }
@@ -118,7 +122,7 @@ class BayTypicalServiceTest {
         when(systemVersionRepository.findByVersion(version)).thenReturn(singletonList(systemVersion));
         when(properties.version()).thenReturn(version);
 
-        var res = sut.getBayTypicals();
+        var res = sut.getAssignedBayTypicals();
 
         assertEquals(0, res.size());
     }
