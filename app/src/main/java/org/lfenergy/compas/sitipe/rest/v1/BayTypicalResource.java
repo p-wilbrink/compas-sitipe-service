@@ -41,7 +41,7 @@ public class BayTypicalResource {
         response.setBayTypicals(
             this.bayTypicalService.getAssignedBayTypicals()
                 .stream()
-                .map(BayTypicalResponse.BayTypical::new)
+                .map(BayTypicalResponse.BayTypicalItem::new)
                 .collect(Collectors.toList())
         );
 

@@ -7,8 +7,6 @@ package org.lfenergy.compas.sitipe.rest.v1.model;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,19 +22,19 @@ public class BayTypicalResponse {
 
     @Schema(description = "List of found BayTypicals in the database.")
     @XmlElement(name = "BayTypical", namespace = SITIPE_SERVICE_V1_NS_URI)
-    private List<BayTypical> bayTypicals;
+    private List<BayTypicalItem> bayTypicals;
 
-    public void setBayTypicals(final List<BayTypical> bayTypicals) {
+    public void setBayTypicals(final List<BayTypicalItem> bayTypicals) {
         this.bayTypicals = bayTypicals;
     }
 
-    public List<BayTypical> getBayTypicals() {
+    public List<BayTypicalItem> getBayTypicals() {
         return bayTypicals;
     }
 
     @Schema(description = "BayTypical found in the database.")
     @XmlAccessorType(XmlAccessType.FIELD)
-    public static class BayTypical {
+    public static class BayTypicalItem {
 
         @Schema(description = "Id of the BayTypical.", example = "1")
         @XmlElement(name = "Id", namespace =  SITIPE_SERVICE_V1_NS_URI)
@@ -54,7 +52,7 @@ public class BayTypicalResponse {
         @XmlElement(name = "Version", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String version;
 
-        @Schema(description = "Description of the BayTypical.", example = "")
+        @Schema(description = "Description of the BayTypical.")
         @XmlElement(name = "Description", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String description;
 
@@ -86,8 +84,8 @@ public class BayTypicalResponse {
         @XmlElement(name = "ReferenceAccessId", namespace =  SITIPE_SERVICE_V1_NS_URI)
         private String referenceAccessId;
 
-        public BayTypical(
-                final org.lfenergy.compas.sitipe.data.entity.BayTypical bt
+        public BayTypicalItem(
+                final BayTypical bt
         ) {
             this.id = bt.getId();
             this.accessId = bt.getAccessId();
