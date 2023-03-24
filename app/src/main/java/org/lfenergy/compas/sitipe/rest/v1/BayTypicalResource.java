@@ -41,20 +41,8 @@ public class BayTypicalResource {
         response.setBayTypicals(
             this.bayTypicalService.getAssignedBayTypicals()
                 .stream()
-                .map(bt -> new BayTypicalResponse.BayTypical(
-                    bt.getId(),
-                    bt.getAccessId(),
-                    bt.getName(),
-                    bt.getVersion(),
-                    bt.getDescription(),
-                    bt.getReleased(),
-                    bt.getLockedBy(),
-                    bt.getLockedOn(),
-                    bt.getModifiedOn(),
-                    bt.getSmrFile(),
-                    bt.getContentVersion(),
-                    bt.getReferenceAccessId()
-            )).collect(Collectors.toList())
+                .map(BayTypicalResponse.BayTypical::new)
+                .collect(Collectors.toList())
         );
 
         return Uni.createFrom().item(response);

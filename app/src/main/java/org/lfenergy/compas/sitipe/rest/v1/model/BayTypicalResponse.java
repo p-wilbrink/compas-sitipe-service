@@ -5,6 +5,7 @@
 package org.lfenergy.compas.sitipe.rest.v1.model;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -86,31 +87,20 @@ public class BayTypicalResponse {
         private String referenceAccessId;
 
         public BayTypical(
-            final Integer id,
-            final String accessId,
-            final String name,
-            final String version,
-            final String description,
-            final int released,
-            final String lockedBy,
-            final Long lockedOn,
-            final Long modifiedOn,
-            final String smrFile,
-            final String contentVersion,
-            final String referenceAccessId
+                final org.lfenergy.compas.sitipe.data.entity.BayTypical bt
         ) {
-            this.id = id;
-            this.accessId = accessId;
-            this.name = name;
-            this.version = version;
-            this.description = description;
-            this.released = released;
-            this.lockedBy = lockedBy;
-            this.lockedOn = lockedOn;
-            this.modifiedOn = modifiedOn;
-            this.smrFile = smrFile;
-            this.contentVersion = contentVersion;
-            this.referenceAccessId = referenceAccessId;
+            this.id = bt.getId();
+            this.accessId = bt.getAccessId();
+            this.name = bt.getName();
+            this.version = bt.getVersion();
+            this.description = bt.getDescription();
+            this.released = bt.getReleased();
+            this.lockedBy = bt.getLockedBy();
+            this.lockedOn = bt.getLockedOn();
+            this.modifiedOn = bt.getModifiedOn();
+            this.smrFile = bt.getSmrFile();
+            this.contentVersion = bt.getContentVersion();
+            this.referenceAccessId = bt.getReferenceAccessId();
         }
         public Integer getId() {
             return id;
