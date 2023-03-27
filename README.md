@@ -44,6 +44,8 @@ Business logic to convert the API calls to SQL logic.
 
 Making the connection to the SITIPE database.
 
+![Sitipe Service](./docs/images/sitipe_service.png)
+
 Example XML output of the Sitipe-Service app
 
 ```xml
@@ -116,7 +118,10 @@ Example Json output:
 ]
 ```
 
-Please note; This is not an official Siemens (supported) project. Check the license to see what is possible with the code. Siemens is registered trademark.
+Please note; This is not an official Siemens (supported) project. 
+Check the license to see what is possible with the code. 
+Siemens is registered trademark.
+The database contains example data from Siemens.
 
 ## Development
 
