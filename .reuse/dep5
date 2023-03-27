@@ -11,10 +11,10 @@ Files: .mvn/wrapper/*
 Copyright: 2023 Alliander N.V.
 License: Apache-2.0
 
-Files: doc/images/*
+Files: docs/images/*
 Copyright: 2023 Alliander N.V.
 License: Apache-2.0
 
-Files: doc/drawio/*
+Files: docs/drawio/*
 Copyright: 2023 Alliander N.V.
 License: Apache-2.0
