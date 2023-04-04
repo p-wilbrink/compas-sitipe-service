@@ -8,16 +8,24 @@ import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.security.TestSecurity;
 import io.restassured.path.json.JsonPath;
+import io.smallrye.common.annotation.Blocking;
+import io.smallrye.mutiny.Uni;
 import org.junit.jupiter.api.Test;
 import org.lfenergy.compas.sitipe.BaseIntegrationTest;
 import org.lfenergy.compas.sitipe.SitipeProperties;
+import org.lfenergy.compas.sitipe.data.entity.BTComponent;
 import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 import org.lfenergy.compas.sitipe.data.entity.SystemVersion;
+import org.lfenergy.compas.sitipe.dto.BTComponentDTO;
 import org.lfenergy.compas.sitipe.helper.SystemVersionHelper;
 
 import javax.inject.Inject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
 import static java.util.Arrays.asList;
@@ -50,11 +58,11 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
         systemVersionHelper.assignBayTypicalToSystemVersion(systemVersion2.getId(), bayTypicalForVersion2);
 
         var response = given()
-                .when().get("/")
-                .then()
-                .statusCode(200)
-                .extract()
-                .response();
+            .when().get("/")
+            .then()
+            .statusCode(200)
+            .extract()
+            .response();
 
         JsonPath jsonPath = response.jsonPath();
 
@@ -77,11 +85,11 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
     @TestSecurity(user = "test-user", roles = {"USER"})
     void itShouldReturnEmptyListWhenVersionNotFound() {
         var response = given()
-                .when().get("/")
-                .then()
-                .statusCode( 200)
-                .extract()
-                .response();
+            .when().get("/")
+            .then()
+            .statusCode( 200)
+            .extract()
+            .response();
 
         JsonPath jsonPath = response.jsonPath();
         assertEquals(0, jsonPath.<ArrayList<Object>>get().size());
@@ -93,14 +101,64 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
         final SystemVersion systemVersion = systemVersionHelper.createAndStoreSystemVersion(1L, sitipeProperties.version());
 
         var response = given()
-                .when().get("/")
-                .then()
-                .statusCode(200)
-                .extract()
-                .response();
+            .when().get("/")
+            .then()
+            .statusCode(200)
+            .extract()
+            .response();
+
+        JsonPath jsonPath = response.jsonPath();
+        assertEquals(0, jsonPath.<ArrayList<Object>>get().size());
+    }
+
+    @Test
+    public void itShouldReturnBTComponentsForDigsiForBayTypicals() {
+        final BayTypical bayTypical = systemVersionHelper.createAndStoreBayTypical(1);
+
+        final BTComponent btComponent1 = systemVersionHelper.createAndStoreBTComponent(2, bayTypical, "DIGSI 5");
+        final BTComponent btComponent2 = systemVersionHelper.createAndStoreBTComponent(3, bayTypical, "DIGSI 6");
+
+        var response = given()
+            .when().get("/{accessId}/components", bayTypical.getAccessId())
+            .then()
+            .statusCode(200)
+            .extract()
+            .response();
+
+        JsonPath jsonPath = response.jsonPath();
+        assertEquals(1, jsonPath.<ArrayList<Object>>get().size());
+        assertEquals(btComponent1.getId(), ((ArrayList<LinkedHashMap<String, ?>>)jsonPath.get()).get(0).get("id"));
+    }
+    @Test
+    public void itShouldReturnEmptyListForBTComponentsWhenNoBayTypicalFound() {
+        var response = given()
+            .when().get("/{accessId}/components", UUID.randomUUID().toString())
+            .then()
+            .statusCode(200)
+            .extract()
+            .response();
+
+        JsonPath jsonPath = response.jsonPath();
+        assertEquals(0, jsonPath.<ArrayList<Object>>get().size());
+    }
+
+    @Test
+    public void itShouldReturnEmptyListForBTComponentsWhenNoComponentsFoundFound() {
+        final BayTypical bayTypical = systemVersionHelper.createAndStoreBayTypical(1);
+
+        final BTComponent btComponent1 = systemVersionHelper.createAndStoreBTComponent(2, bayTypical, "DIGSI 6");
+        final BTComponent btComponent2 = systemVersionHelper.createAndStoreBTComponent(3, bayTypical, "DIGSI 6");
+
+        var response = given()
+            .when().get("/{accessId}/components", UUID.randomUUID().toString())
+            .then()
+            .statusCode(200)
+            .extract()
+            .response();
 
         JsonPath jsonPath = response.jsonPath();
         assertEquals(0, jsonPath.<ArrayList<Object>>get().size());
     }
 
 }
+

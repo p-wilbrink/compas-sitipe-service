@@ -32,22 +32,109 @@
 			"name": "v2",
 			"item": [
 				{
-					"name": "Get Bay Typicals",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sitpeServiceBaseUrl}}/v2/baytypicals",
-							"host": [
-								"{{sitpeServiceBaseUrl}}"
-							],
-							"path": [
-								"v2",
-								"baytypicals"
-							]
+					"name": "BayTypicals",
+					"item": [
+						{
+							"name": "Get Bay Typicals",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sitpeServiceBaseUrl}}/v2/baytypicals",
+									"host": [
+										"{{sitpeServiceBaseUrl}}"
+									],
+									"path": [
+										"v2",
+										"baytypicals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get BT Components For Bay Typical",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sitpeServiceBaseUrl}}/v2/baytypicals/:accessId/components",
+									"host": [
+										"{{sitpeServiceBaseUrl}}"
+									],
+									"path": [
+										"v2",
+										"baytypicals",
+										":accessId",
+										"components"
+									],
+									"variable": [
+										{
+											"key": "accessId",
+											"value": "3BD3CA17-8136-4F72-A381-9C047FF1F3A8"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "BT Components",
+					"item": [
+						{
+							"name": "Get Imported BT Components",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sitpeServiceBaseUrl}}/v2/btcomponents/:accessId",
+									"host": [
+										"{{sitpeServiceBaseUrl}}"
+									],
+									"path": [
+										"v2",
+										"btcomponents",
+										":accessId"
+									],
+									"variable": [
+										{
+											"key": "accessId",
+											"value": "641862E1-FB2B-4159-9F07-2E9F85665F7C"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get SCL Data For BT Component",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sitpeServiceBaseUrl}}/v2/btcomponents/imported/:id",
+									"host": [
+										"{{sitpeServiceBaseUrl}}"
+									],
+									"path": [
+										"v2",
+										"btcomponents",
+										"imported",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
@@ -57,7 +144,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJuM0F5VTh3LXNON3NDdWRFS1NrblBuUXZsbHMyZ2pELWtwcGNUUGI1cVI4In0.eyJleHAiOjE2NzkwNTUyNzksImlhdCI6MTY3OTA1NDk3OSwianRpIjoiYjFkYjQ3MDYtMzE5OC00YWM0LWEyMzQtMjJhYThjY2VkYzE4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC9hdXRoL3JlYWxtcy9jb21wYXMiLCJhdWQiOlsib3BlbnNjZCIsInNjbC1hdXRvLWFsaWdubWVudCIsInNjbC1kYXRhLXNlcnZpY2UiLCJjaW0tbWFwcGluZyIsInNjbC12YWxpZGF0b3IiLCJzaXRpcGUtc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiZGVlZDQ4MzItODUzMS00M2VlLThiZjItMjBiYzUzNGZlZTQ1IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoib3BlbnNjZCIsInNlc3Npb25fc3RhdGUiOiJhYjMzOTY1My1mODg0LTQ4M2QtYjRlYi0zZGM0NmQyYmQzMTUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3QiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtY29tcGFzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNjbC1hdXRvLWFsaWdubWVudCI6eyJyb2xlcyI6WyJVU0VSIl19LCJzY2wtZGF0YS1zZXJ2aWNlIjp7InJvbGVzIjpbIlNTRF9SRUFEIiwiU1REX1JFQUQiLCJJSURfUkVBRCIsIkNJRF9SRUFEIiwiU0VEX1JFQUQiLCJJQ0RfUkVBRCIsIlNDRF9SRUFEIiwiSVNEX1JFQUQiXX0sImNpbS1tYXBwaW5nIjp7InJvbGVzIjpbIlVTRVIiXX0sInNjbC12YWxpZGF0b3IiOnsicm9sZXMiOlsiVVNFUiJdfSwic2l0aXBlLXNlcnZpY2UiOnsicm9sZXMiOlsiVVNFUiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19LCJvcGVuc2NkIjp7InJvbGVzIjpbIlVTRVIiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJhYjMzOTY1My1mODg0LTQ4M2QtYjRlYi0zZGM0NmQyYmQzMTUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6Ik1ycyBSZWFkZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzY2wtZGF0YS1yZWFkZXIiLCJnaXZlbl9uYW1lIjoiTXJzIiwiZmFtaWx5X25hbWUiOiJSZWFkZXIifQ.IAHpbM6TN8zPoqrw-HvNIpJWtS1KCuzWh426rYC289pMsU5snhtEphKfB7Kj2Pq9c2LDjxF0j2o0lJKUc8j37Y-i1G3te1ryU9d2lbBXS5Kzzpj-WNzuRVzSR6TnAc0EWu0enmMXX9gbiCeU927U16KsvF99T4vW7TcYwMz5_hgJURp0ijHDtembhbbZO6yPBTqmxWg5Wij5_Eg3X6BXnqCFo32XpxY7V-3YFOEbS3ta67u6xth9NEk4uUzSNNjBCLwqp0cV4gZR3i8Pfosrem7_KaIfw7YOT8Eq49PC88nSg6Ie-XCO4H4mPGQ6wJXwbM-FY47GF_tmugHDsFH1vw",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJuM0F5VTh3LXNON3NDdWRFS1NrblBuUXZsbHMyZ2pELWtwcGNUUGI1cVI4In0.eyJleHAiOjE2ODAwODY2MTksImlhdCI6MTY4MDA4NjMxOSwianRpIjoiNWJmMmI1NzktZTc0Yy00OTFmLWE4YzItMjkyZjBiODUxOWQyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC9hdXRoL3JlYWxtcy9jb21wYXMiLCJhdWQiOlsib3BlbnNjZCIsInNjbC1hdXRvLWFsaWdubWVudCIsInNjbC1kYXRhLXNlcnZpY2UiLCJjaW0tbWFwcGluZyIsInNjbC12YWxpZGF0b3IiLCJzaXRpcGUtc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiZGVlZDQ4MzItODUzMS00M2VlLThiZjItMjBiYzUzNGZlZTQ1IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoib3BlbnNjZCIsInNlc3Npb25fc3RhdGUiOiJmNzY5OGNkOC1mM2M4LTQ2MjgtOWU4MS0yNmYxNTkxZjk5ZjIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3QiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtY29tcGFzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNjbC1hdXRvLWFsaWdubWVudCI6eyJyb2xlcyI6WyJVU0VSIl19LCJzY2wtZGF0YS1zZXJ2aWNlIjp7InJvbGVzIjpbIlNTRF9SRUFEIiwiU1REX1JFQUQiLCJJSURfUkVBRCIsIkNJRF9SRUFEIiwiU0VEX1JFQUQiLCJJQ0RfUkVBRCIsIlNDRF9SRUFEIiwiSVNEX1JFQUQiXX0sImNpbS1tYXBwaW5nIjp7InJvbGVzIjpbIlVTRVIiXX0sInNjbC12YWxpZGF0b3IiOnsicm9sZXMiOlsiVVNFUiJdfSwic2l0aXBlLXNlcnZpY2UiOnsicm9sZXMiOlsiVVNFUiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19LCJvcGVuc2NkIjp7InJvbGVzIjpbIlVTRVIiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJmNzY5OGNkOC1mM2M4LTQ2MjgtOWU4MS0yNmYxNTkxZjk5ZjIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6Ik1ycyBSZWFkZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzY2wtZGF0YS1yZWFkZXIiLCJnaXZlbl9uYW1lIjoiTXJzIiwiZmFtaWx5X25hbWUiOiJSZWFkZXIifQ.Ysjo-sUZQeiCIAXWBeu0XhNgG5JCxJYGPXHwh3-tGzHOjhtjwajSeS1iJUBgsPkD5--z05ZRV-mn7JHcQ4_hhBDqK_8xK7VP5J0sWdcPvCGdLG0XukbuwNvFdHd2ozHugJS4uS_EzOBtMp2MX3lKnnM3mcZYFB1EjpoudcSCCsT3ec1xo63E1Q2JedG6tqFEGzk1NzMtV9ldr5jlVyrj8VIdzFTQJ9gohBab6rRW-eRpoIu4TpJxrt_G9ezhc154Q6ooIByxCIm5cSwR3kTTZG3JHseaO90qsbApK2DJa_o-FSv_nK1KDnRPlSvY6ML8tCv8rpY-j71Ekyqee2oMZw",
 				"type": "string"
 			}
 		]

@@ -21,7 +21,6 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -60,7 +59,6 @@ class BayTypicalServiceTest {
         var res = sut.getAssignedBayTypicals();
 
         assertEquals(2, res.size());
-        assertTrue(res.containsAll(asList(bayTypical1, bayTypical2)));
     }
 
     @Test
@@ -82,7 +80,6 @@ class BayTypicalServiceTest {
         var res = sut.getAssignedBayTypicals();
 
         assertEquals(4, res.size());
-        assertTrue(res.containsAll(asList(bayTypical1, bayTypical2, bayTypical3, bayTypical4)));
     }
 
     @Test

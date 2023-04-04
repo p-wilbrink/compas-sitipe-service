@@ -5,9 +5,9 @@
 package org.lfenergy.compas.sitipe.service;
 
 import org.lfenergy.compas.sitipe.SitipeProperties;
-import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 import org.lfenergy.compas.sitipe.data.repository.BayTypicalRepository;
 import org.lfenergy.compas.sitipe.data.repository.SystemVersionRepository;
+import org.lfenergy.compas.sitipe.dto.BayTypicalDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -33,11 +33,12 @@ public class BayTypicalService {
         this.sitipeProperties = sitipeProperties;
     }
 
-    public List<BayTypical> getAssignedBayTypicals() {
+    public List<BayTypicalDTO> getAssignedBayTypicals() {
         return this.systemVersionRepository.findByVersion(sitipeProperties.version())
             .stream()
             .flatMap(systemVersion -> systemVersion.getAssignedBayTypicals() != null ? Arrays.stream(systemVersion.getAssignedBayTypicals().split(",")) : Stream.empty())
             .flatMap(accessId -> bayTypicalRepository.findByAccessId(accessId).stream())
+            .map(BayTypicalDTO::new)
             .collect(Collectors.toList());
     }
 }
