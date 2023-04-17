@@ -48,5 +48,4 @@ public class BayTypicalResource {
         return Uni.createFrom().item(response);
     }
 
-
 }

@@ -134,6 +134,7 @@ public class SystemVersionHelper {
         btComponent.setHasIecInformation(1);
         btComponent.setImportedOn(0L);
         btComponent.setReferenceAccessId(UUID.randomUUID().toString());
+        btComponent.setComponentGuid(UUID.randomUUID().toString());
 
         btComponentRepository.persistAndFlush(btComponent);
 
