@@ -6,9 +6,6 @@ package org.lfenergy.compas.sitipe.dto;
 
 import org.lfenergy.compas.sitipe.data.entity.BTComponent;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class BTComponentDTO {
 
     private final Integer id;

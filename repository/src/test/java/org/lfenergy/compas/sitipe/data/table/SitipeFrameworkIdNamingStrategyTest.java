@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.data.table;
 
 import io.smallrye.config.ConfigValuePropertiesConfigSource;
@@ -5,7 +9,6 @@ import io.smallrye.config.SmallRyeConfig;
 import io.smallrye.config.SmallRyeConfigBuilder;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.spi.ConfigProviderResolver;
-import org.eclipse.microprofile.config.spi.ConfigSource;
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 import org.junit.jupiter.api.AfterEach;
@@ -29,7 +32,7 @@ class SitipeFrameworkIdNamingStrategyTest {
     private final String frameworkId = "123";
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         final Map<String, String> configMap = new HashMap<>();
         configMap.put("compas.sitipe.framework-id", frameworkId);
 
@@ -42,12 +45,12 @@ class SitipeFrameworkIdNamingStrategyTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         ConfigProviderResolver.instance().releaseConfig(ConfigProvider.getConfig());
     }
 
     @Test
-    public void itShouldSetCorrectNamingWhenHasFrameworkId() {
+    void itShouldSetCorrectNamingWhenHasFrameworkId() {
         final String tableName = "TABLE";
 
         final Identifier identifier = mock(Identifier.class);

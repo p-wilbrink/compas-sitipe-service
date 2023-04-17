@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BayTypicalDTOTest {
 
     @Test
-    public void itShouldMapProperties() {
+    void itShouldMapProperties() {
         final BayTypical entity = new BayTypical();
         entity.setId(1);
         entity.setDescription("DESCRIPTION");

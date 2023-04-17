@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ImportedComponentDTOTest {
 
     @Test
-    public void itShouldMapProperties() {
+    void itShouldMapProperties() {
         final ImportedComponent entity = new ImportedComponent();
         entity.setId(1);
         entity.setType("TYPE");

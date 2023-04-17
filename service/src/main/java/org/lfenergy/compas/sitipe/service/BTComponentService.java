@@ -28,7 +28,7 @@ public class BTComponentService {
         return btComponentRepository.findBayTypicalComponentsByTypicalAccessId(accessId)
             .stream()
             .map(BTComponentDTO::new)
-            .collect(Collectors.toList());
+            .toList();
     }
 
 }

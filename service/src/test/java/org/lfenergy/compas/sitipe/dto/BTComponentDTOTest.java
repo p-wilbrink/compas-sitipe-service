@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BTComponentDTOTest {
 
     @Test
-    public void itShouldMapProperties() {
+    void itShouldMapProperties() {
         final BTComponent entity = new BTComponent();
 
         entity.setId(1);

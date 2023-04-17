@@ -37,7 +37,7 @@ public class ImportedComponentService {
         return importedComponentRepository.getByAccessId(accessId)
             .stream()
             .map(ImportedComponentDTO::new)
-            .collect(Collectors.toList());
+            .toList();
     }
 
     public ImportedDataDTO getImportedComponentData(final Integer id) {

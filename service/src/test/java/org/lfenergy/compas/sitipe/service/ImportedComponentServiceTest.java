@@ -38,12 +38,12 @@ class ImportedComponentServiceTest {
     private ImportedComponentService sut;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         sut = new ImportedComponentService(importedComponentRepository);
     }
 
     @Test
-    public void itShouldReturnListOfImportedComponents() {
+    void itShouldReturnListOfImportedComponents() {
         final ImportedComponent importedComponent1 = new ImportedComponent();
         importedComponent1.setId(1);
         final ImportedComponent importedComponent2 = new ImportedComponent();
@@ -62,7 +62,7 @@ class ImportedComponentServiceTest {
     }
 
     @Test
-    public void itShouldReturnEmptyListWhenNoImportedComponentsFound() {
+    void itShouldReturnEmptyListWhenNoImportedComponentsFound() {
         final String accessId = UUID.randomUUID().toString();
 
         when(importedComponentRepository.getByAccessId(accessId))
@@ -74,7 +74,7 @@ class ImportedComponentServiceTest {
     }
 
     @Test
-    public void itShouldGetById() throws IOException {
+    void itShouldGetById() throws IOException {
         final Integer id = 1;
         final String data = "TEST DATA";
         ImportedComponent importedComponent = new ImportedComponent();
@@ -90,7 +90,7 @@ class ImportedComponentServiceTest {
     }
 
     @Test
-    public void itShouldThrowErrorWhenImportedComponentNotFound() {
+    void itShouldThrowErrorWhenImportedComponentNotFound() {
         when(importedComponentRepository.getById(any())).thenReturn(null);
         assertThrows(RuntimeException.class, () -> sut.getImportedComponentData(1));
     }

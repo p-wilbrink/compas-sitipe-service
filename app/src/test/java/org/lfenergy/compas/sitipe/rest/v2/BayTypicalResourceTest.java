@@ -113,7 +113,7 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
 
     @Test
     @TestSecurity(user = "test-user", roles = {"USER"})
-    public void itShouldReturnBTComponentsForDigsiForBayTypicals() {
+    void itShouldReturnBTComponentsForDigsiForBayTypicals() {
         final BayTypical bayTypical = systemVersionHelper.createAndStoreBayTypical(1);
 
         final BTComponent btComponent1 = systemVersionHelper.createAndStoreBTComponent(2, bayTypical, "DIGSI 5");
@@ -132,7 +132,7 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
     }
     @Test
     @TestSecurity(user = "test-user", roles = {"USER"})
-    public void itShouldReturnEmptyListForBTComponentsWhenNoBayTypicalFound() {
+    void itShouldReturnEmptyListForBTComponentsWhenNoBayTypicalFound() {
         var response = given()
             .when().get("/{accessId}/components", UUID.randomUUID().toString())
             .then()
@@ -146,7 +146,7 @@ class BayTypicalResourceTest extends BaseIntegrationTest {
 
     @Test
     @TestSecurity(user = "test-user", roles = {"USER"})
-    public void itShouldReturnEmptyListForBTComponentsWhenNoComponentsFoundFound() {
+    void itShouldReturnEmptyListForBTComponentsWhenNoComponentsFoundFound() {
         final BayTypical bayTypical = systemVersionHelper.createAndStoreBayTypical(1);
 
         final BTComponent btComponent1 = systemVersionHelper.createAndStoreBTComponent(2, bayTypical, "DIGSI 6");

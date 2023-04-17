@@ -30,15 +30,13 @@ class BTComponentServiceTest {
 
     private BTComponentService sut;
 
-
-
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         sut = new BTComponentService(btComponentRepository);
     }
 
     @Test
-    public void itShouldReturnListOfBTComponents() {
+    void itShouldReturnListOfBTComponents() {
         final BTComponent btComponent1 = new BTComponent();
         btComponent1.setId(1);
 
@@ -58,7 +56,7 @@ class BTComponentServiceTest {
     }
 
     @Test
-    public void itShouldReturnEmptyListWhenNoBTComponentsFound() {
+    void itShouldReturnEmptyListWhenNoBTComponentsFound() {
         final String accessId = UUID.randomUUID().toString();
 
         when(btComponentRepository.findBayTypicalComponentsByTypicalAccessId(accessId))
