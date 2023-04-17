@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.rest.v2;
 
 import io.quarkus.test.common.http.TestHTTPEndpoint;
@@ -6,8 +10,6 @@ import io.quarkus.test.security.TestSecurity;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.lfenergy.compas.sitipe.BaseIntegrationTest;
-import org.lfenergy.compas.sitipe.data.entity.BTComponent;
-import org.lfenergy.compas.sitipe.data.entity.BayTypical;
 import org.lfenergy.compas.sitipe.data.entity.ImportedComponent;
 import org.lfenergy.compas.sitipe.helper.SystemVersionHelper;
 

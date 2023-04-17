@@ -1,13 +1,13 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.helper;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.zip.DeflaterOutputStream;
-import java.util.zip.InflaterOutputStream;
 
 @ApplicationScoped
 public class CompressionUtils {

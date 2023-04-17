@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Alliander N.V.
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package org.lfenergy.compas.sitipe.data.entity;
 
 import javax.persistence.*;
@@ -13,7 +17,7 @@ public class ImportedComponent {
     private String type;
 
     @Column(name = "data")
-  //  @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] data;
 

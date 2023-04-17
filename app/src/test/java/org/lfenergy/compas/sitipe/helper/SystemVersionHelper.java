@@ -17,15 +17,8 @@ import org.lfenergy.compas.sitipe.data.repository.SystemVersionRepository;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.zip.Inflater;
-import java.util.zip.InflaterInputStream;
-import java.util.zip.InflaterOutputStream;
 
 import static java.util.Arrays.asList;
 
