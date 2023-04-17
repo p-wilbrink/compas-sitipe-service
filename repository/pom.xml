@@ -67,6 +67,11 @@ SPDX-License-Identifier: Apache-2.0
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -15,7 +15,7 @@ import java.util.List;
 public class ImportedComponentRepository implements PanacheRepositoryBase<ImportedComponent, Integer> {
 
     public List<ImportedComponent> getByAccessId(final String accessId) {
-        return this.list("componentAccessId = ?1 AND type = 'IID'", accessId);
+        return this.list("componentAccessId = ?1 AND type = ?2", accessId, "IID");
     }
 
     public ImportedComponent getById(final Integer id) {

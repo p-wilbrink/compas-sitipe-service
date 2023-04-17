@@ -19,7 +19,7 @@ import static org.codehaus.groovy.runtime.InvokerHelper.asList;
 class BayTypicalResponseTest {
 
     @Test
-    public void itShouldMapProperties() {
+    void itShouldMapProperties() {
         final BayTypical entity = new BayTypical();
 
         entity.setId(1);

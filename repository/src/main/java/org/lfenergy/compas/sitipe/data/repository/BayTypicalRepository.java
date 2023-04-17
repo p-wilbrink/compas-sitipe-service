@@ -17,7 +17,4 @@ public class BayTypicalRepository implements PanacheRepository<BayTypical> {
         return this.list("accessId", accessId);
     }
 
-
-
-
 }
