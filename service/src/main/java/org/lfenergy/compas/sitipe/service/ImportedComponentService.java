@@ -14,11 +14,14 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
+import java.util.zip.ZipInputStream;
 
 @ApplicationScoped
 public class ImportedComponentService {
@@ -56,13 +59,18 @@ public class ImportedComponentService {
 
         try {
             while ((rlen = iis.read(buffer)) != -1) {
-                result.append(new String(Arrays.copyOf(buffer, rlen)));
+                result.append(new String(Arrays.copyOf(buffer, rlen), StandardCharsets.ISO_8859_1));
             }
         } catch (IOException e) {
             throw new InternalServerErrorException(e);
         }
 
-        return new ImportedDataDTO(result.toString());
+        return new ImportedDataDTO(
+            new String(result.toString().getBytes(), StandardCharsets.UTF_8)
+                .replaceAll("[^\\x00-\\x7F]", "")
+        );
+
+
     }
 
     @Transactional
