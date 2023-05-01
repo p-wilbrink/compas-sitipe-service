@@ -18,7 +18,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-//@Authenticated
+@Authenticated
 @RequestScoped
 @Path("/v2/baytypicals")
 public class BayTypicalResource {
