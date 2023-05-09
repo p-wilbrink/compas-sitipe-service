@@ -4,7 +4,9 @@
 
 package org.lfenergy.compas.sitipe.helper;
 
+import org.lfenergy.compas.sitipe.data.repository.BTComponentRepository;
 import org.lfenergy.compas.sitipe.data.repository.BayTypicalRepository;
+import org.lfenergy.compas.sitipe.data.repository.ImportedComponentRepository;
 import org.lfenergy.compas.sitipe.data.repository.SystemVersionRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,9 +22,17 @@ public class DatabaseCleaner {
     @Inject
     BayTypicalRepository bayTypicalRepository;
 
+    @Inject
+    BTComponentRepository btComponentRepository;
+
+    @Inject
+    ImportedComponentRepository importedComponentRepository;
+
     @Transactional
     public void cleanUp() {
         bayTypicalRepository.deleteAll();
         systemVersionRepository.deleteAll();
+        btComponentRepository.deleteAll();
+        importedComponentRepository.deleteAll();
     }
 }
