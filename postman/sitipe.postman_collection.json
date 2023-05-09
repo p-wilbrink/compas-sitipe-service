@@ -89,7 +89,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{sitpeServiceBaseUrl}}/v2/btcomponents/:accessId",
+									"raw": "{{sitpeServiceBaseUrl}}/v2/btcomponents/:accessId/imported",
 									"host": [
 										"{{sitpeServiceBaseUrl}}"
 									],
