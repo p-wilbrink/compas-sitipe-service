@@ -59,13 +59,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./mvnw -B -s custom_maven_settings.xml 
+          ./mvnw -B -s custom_maven_settings.xml clean verify
       - name: Build and analyze (Push)
         if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./mvnw -B -s custom_maven_settings.xml 
+          ./mvnw -B -s custom_maven_settings.xml clean verify
       - name: Save PR number to file
         if: github.event_name == 'pull_request'
         run: echo ${{ github.event.number }} > PR_NUMBER.txt
