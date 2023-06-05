@@ -96,7 +96,7 @@ jobs:
           -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
           -Dsonar.pullrequest.base=${{ github.base_ref }} \
           -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }} \
-          clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
     - name: Build and analyze (Push)
       if: ${{ github.event_name == 'push' }}
       env:
@@ -106,4 +106,4 @@ jobs:
         ./mvnw -B -s custom_maven_settings.xml -Psonar \
           ${{ steps.sonar_env.outputs.sonar_opts }} \
           -Dsonar.branch.name=${{ github.ref_name }} \
-          clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
